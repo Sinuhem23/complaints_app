@@ -20,12 +20,28 @@
 
       
       <div class="flex-container">
+        <!-- Search bar takes a number of how many complaints they want to see -->
         <input class="searchBar" type="text" placeholder="# OF COMPLAINTS">
-        <button>BROOKLYN</button>
+        <!-- A list of complaints should be displayed on the page, according to the number they input AND the borough they clicked on. Handled by NYPD-->
+        <!-- Default to be 10 -->
+        <!-- 
+        When the list of complaints is shown, each complaint should also have a button on it that reads something along the lines of "toggle police response"
+        When the user clicks on on the "toggle police response" button, it should then toggle how the police responded to that particular complaint
+        Make sure it only toggles the response for that one complaint, not the entire list! -->
+
+
+        <button onclick="bk()">BROOKLYN</button>
         <button>MANHATTAN</button>
         <button>QUEENS</button>  
         <button>BRONX</button>
         <button>STATEN ISLAND</button>
+        
+      </div>
+
+        <div class="inner_Container">
+
+        <p id='description'></p>
+      </div>
        
       </div>
     </div>

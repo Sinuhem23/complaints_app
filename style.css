@@ -1,6 +1,10 @@
 #container {
-  display: grid;
+  /* display: grid; */
   justify-content: center;
+}
+.inner_Container {
+  color: red;
+  p
 }
 
 .flex-container {
