@@ -15,7 +15,6 @@ function displayData(d) {
 
 // Brooklyn
 function bk() {
-  let createNewParagraph = document.createElement('p');
   fetch(
     'https://data.cityofnewyork.us/resource/erm2-nwe9.json?borough=BROOKLYN'
   )
@@ -28,13 +27,26 @@ function bk() {
       return response.json();
     })
     .then((data) => {
-      if ((data = data.filter((data) => data.agency === 'NYPD'))) {
-        data.map((data) => {
-          document.querySelector('#description').append(data.descriptor);
-          console.log(data.descriptor);
-        });
+      if ((data = data.filter((data) => data.agency === 'DSNY'))) {
+        let createTag = document.createElement('div');
+        let targetId = document.getElementById('div_holder');
 
-        // data;
+        let d = data.descriptor;
+
+        for (i = 0; i < data.length; i++) {
+          let createTag = document.createElement('p');
+
+          // createTag.textContent = data[i];
+          // targetId.appendChild(createTag);
+
+          targetId.appendChild(createTag).textContent = data[i].descriptor;
+        }
+
+        // data.forEach((data) => {
+        //   targetId.appendChild(createTag).textContent = data.descriptor;
+        // });
+
+        console.log('appended');
       }
     })
     .catch((error) => {
