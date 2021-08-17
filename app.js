@@ -1,78 +1,59 @@
-// fetch('https://data.cityofnewyork.us/resource/erm2-nwe9.json?agency_name=NYPD');
-//   .then((response) => response.json())
-//   .then((data) => displayData(data));
-// console.log(data.agency);
+const list = document.querySelector('.list');
+let buttons = document.querySelectorAll('.btn');
+let input = document.querySelector('#search');
 
-function displayData(d) {
-  console.log(d);
-  // d.split('');
-}
-// Looking for
-// borough
-// descriptor (which says what kind of complaint was made)
-// agency: "NYPD" (because we only want complaints that were handled by the police department)
-// resolution_description (which says how the police handled the complaint)
+buttons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    let inputValue = input.value;
+    let buttonValue = btn.value;
+    if (!inputValue) {
+      // Setting 10 to default if no input
+      inputValue = 10;
+    }
+    nypdComplaints(inputValue, buttonValue);
+  });
+});
 
-// Brooklyn
-function bk() {
-  fetch(
-    'https://data.cityofnewyork.us/resource/erm2-nwe9.json?borough=BROOKLYN'
-  )
-    // 'https://data.cityofnewyork.us/resource/erm2-nwe9.json?$$app_token=6eJSL7hHcdnJpiVejhYdKkXR1'
-
-    .then((response) => {
-      if (!response.ok) {
-        throw Error('Error');
-      }
-      return response.json();
-    })
+function nypdComplaints(value, city) {
+  list.innerHTML = '';
+  fetch('https://data.cityofnewyork.us/resource/erm2-nwe9.json')
+    .then((response) => response.json())
     .then((data) => {
-      if ((data = data.filter((data) => data.agency === 'DSNY'))) {
-        let createTag = document.createElement('div');
-        let targetId = document.getElementById('div_holder');
+      console.log(data);
+      data
+        // Takes only NYPD complaints
+        .filter((filterByAgency) => filterByAgency.agency === 'NYPD')
+        .filter((filterByCity) => filterByCity.borough === city.toUpperCase())
+        .forEach((data, i) => {
+          if (value > i) {
+            list.insertAdjacentHTML(
+              'afterbegin',
+              `<div class="descriptor-container">
+                    <li class="item">${data.descriptor}</li>
+                    <button class="response">What did the police do</button>
+                </div>
+                <div class="response-container">
+                    <p class="resolution-Text">${
+                      data.resolution_description
+                        ? data.resolution_description
+                        : 'Complaint not resolved yet'
+                    }</p>
+                </div>
+                `
+            );
 
-        let d = data.descriptor;
+            let nypdResponse = document.querySelector('.response');
+            let response = document.querySelector('.response-container');
+            nypdResponse.addEventListener('click', () => {
+              response.classList.remove('response-container');
+            });
 
-        for (i = 0; i < data.length; i++) {
-          let createTag = document.createElement('p');
-
-          // createTag.textContent = data[i];
-          // targetId.appendChild(createTag);
-
-          targetId.appendChild(createTag).textContent = data[i].descriptor;
-        }
-
-        // data.forEach((data) => {
-        //   targetId.appendChild(createTag).textContent = data.descriptor;
-        // });
-
-        console.log('appended');
-      }
-    })
-    .catch((error) => {
-      console.log(error);
+            nypdResponse.addEventListener('mouseout', () => {
+              setTimeout(() => {
+                response.classList.add('response-container');
+              }, 500);
+            });
+          }
+        });
     });
-  // displayData(data));
 }
-
-// // Manhattan
-// fetch('https://data.cityofnewyork.us/resource/erm2-nwe9.json?borough=MANHATTAN')
-//   .then((response) => response.json())
-//   .then((data) => displayData(data));
-
-// // Queens
-// fetch('https://data.cityofnewyork.us/resource/erm2-nwe9.json?borough=QUEENS')
-//   .then((response) => response.json())
-//   .then((data) => displayData(data));
-
-// // Bronx
-// fetch('https://data.cityofnewyork.us/resource/erm2-nwe9.json?borough=BRONX')
-//   .then((response) => response.json())
-//   .then((data) => displayData(data));
-
-// // Staten Island
-// fetch(
-//   'https://data.cityofnewyork.us/resource/erm2-nwe9.json?borough=STATENISLAND'
-// )
-//   .then((response) => response.json())
-//   .then((data) => displayData(data));

@@ -1,78 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- JS File -->
-    <script src="./app.js" async></script>
-    <!-- End of JS File -->
-     <!-- CSS -->
-     <link rel="stylesheet" href="./style.css" />
-     <!-- End of CSS -->
-    <title>Complaints App</title>
+    <title>Complaint App</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- End of CSS -->
+    <!-- JS Script -->
+    <script defer src="app.js"></script>
+    <!-- End of JS Script -->
   </head>
   <body>
-    <div id="container">
-    <div class="wrapping_content"> 
-
-    <h1 id='main_text'>WHERE CAN WE CAUSE TROUBLE TODAY? </h1>
-
-      
-      <div class="flex-container">
-        <!-- Search bar takes a number of how many complaints they want to see -->
-        <input class="searchBar" type="text" placeholder="# OF COMPLAINTS">
-        <!-- A list of complaints should be displayed on the page, according to the number they input AND the borough they clicked on. Handled by NYPD-->
-        <!-- Default to be 10 -->
-        <!-- 
-        When the list of complaints is shown, each complaint should also have a button on it that reads something along the lines of "toggle police response"
-        When the user clicks on on the "toggle police response" button, it should then toggle how the police responded to that particular complaint
-        Make sure it only toggles the response for that one complaint, not the entire list! -->
-
-
-        <button onclick="bk()">BROOKLYN</button>
-        <button>MANHATTAN</button>
-        <button>QUEENS</button>  
-        <button>BRONX</button>
-        <button>STATEN ISLAND</button>
-        
+    <section class="complaint-container">
+      <h1 class="top-Text">WHERE CAN WE CAUSE TROUBLE TODAY?</h1>
+      <div class="input-container">
+        <input id="search" type="text" placeholder="# of Complaints" />
+        <button class="btn" value="brooklyn">BROOKLYN</button>
+        <button class="btn" value="manhattan">MANHATTAN</button>
+        <button class="btn" value="queens">QUEENS</button>
+        <button class="btn" value="bronx">BRONX</button>
+        <button class="btn" value="staten island">STATEN ISLAND</button>
       </div>
-
-        
-      
-      <div class="inner_Container">
-        <div id='div_holder'>
-          
-        
-        </div>
-         <!-- <button id=btn></button> -->
+      <div class="dynamic-container">
+        <ul class="list"></ul>
       </div>
-      </div>
-       
-      </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-
-
-
-
-
-
-
-
-
+    </section>
   </body>
 </html>

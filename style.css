@@ -1,52 +1,82 @@
-#container {
-  /* display: grid; */
-  justify-content: center;
+body {
+  background-image: url(./nypd.jpeg);
+  background-size: cover;
+  background-repeat: none;
 }
-.inner_Container {
-  /* display: grid;
-  grid-column-gap: 50px;
-  grid-template-columns: 50% 50%;
-  color: red; */
-}
-.items {
+
+.top-Text {
   text-align: center;
 }
 
-#description {
-  justify-content: flex-start;
+.complaint-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(195, 195, 195);
+  opacity: 0.9;
+  padding: 3rem;
+  margin: 3rem;
 }
 
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
+.btn {
+  padding: 5px 10px;
+  background-color: rgb(29, 100, 194);
+  color: white;
+  border-radius: 10px;
 }
-.wrapping_content {
-  width: 100%;
-  padding: 1rem;
-  height: auto;
-  background-color: lightgray;
+
+.btn:hover {
+  background-color: rgb(87, 129, 184);
 }
-.searchBar {
+
+.btn-disable {
+  pointer-events: none;
+}
+
+#search {
   padding: 10px;
   border: 0;
   outline: 0;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 5px;
 }
-.searchBar:hover {
-  border: 1px solid yellow;
+#search:hover {
+  border: 2px solid yellow;
 }
 
-button {
-  outline: 0;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 5px;
-  background-color: rgb(42, 122, 187);
-  color: white;
-  text-align: center;
-  border-radius: 5px;
-  padding: 5px;
+.dynamic-container {
+  width: 45vw;
+  margin-top: 1vh;
 }
-button:hover {
-  background-color: rgb(92, 144, 187);
+
+.descriptor-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+  padding: 5px 0;
+}
+
+.response {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: rgb(131, 38, 38);
+  color: white;
+}
+
+.response:hover {
+  background-color: rgb(156, 89, 89);
+  padding: 7px 10px;
+}
+
+.item {
+  list-style: none;
+  font-weight: bold;
+}
+
+.response-container {
+  display: none;
+}
+.resolution-Text {
+  font-weight: bold;
+  color: rgb(29, 100, 194);
+  padding: 1rem;
 }
